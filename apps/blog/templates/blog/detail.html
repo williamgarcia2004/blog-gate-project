@@ -1,0 +1,91 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block pag_descrip %} Detalle del post #{{ post.id }} {% endblock pag_descrip %}
+{% block title_pag %} Post #{{ post.id }} | BlogGate 💻 {% endblock title_pag %}
+{% block favicon %}
+    https://cdn-icons-png.flaticon.com/512/15356/15356814.png
+{% endblock favicon %}
+{% block css_styles %}
+    <style>
+        form #id_body {
+            resize: none;
+            field-sizing: content;
+            overflow: hidden;
+            width: 450px;
+            height: 35px;
+            outline-0;
+            border: 2px solid white;
+        }
+    </style>
+{% endblock css_styles %}
+
+{% block content %}
+    <header class="bg-black text-white px-4 py-6 flex justify-center items-center container-sticky ">
+        <h2 class="tracking-widest font-bold font-ubuntu text-xl text-center">Detalle del Post #{{ post.id }}</h2>
+    </header>
+
+    <main>
+        <section class="py-5 px-7 flex flex-col items-center gap-6">
+            <h2 class="tracking-widest font-semibold text-xl">{{ post.title_post }}</h2>
+
+            <p>Autor: <span class="font-semibold">{{ post.author.first_name }} {{ post.author.last_name }}</span></p>
+
+            <p>Fecha de creación: <span class="font-semibold">{{ post.publish }}</span></p>
+
+            <p>Fecha de modificación: <span class="font-semibold">{{ post.edited }}</span></p>
+            
+            <img src="{{ post.image_post.url }}" class="w-102 h-52 border-2 border-black rounded-2xl object-cover">
+
+            <div class="w-[700px] flex flex-col gap-6 max-lg:w-3/4_w">{{ post.body_html|safe }}</div>
+
+            <a class="btn-primary" href="{% url "blog:post_list" %}">Regresar</a>
+        </section>
+
+        <section class="p-4 bg-black/85 text-white">
+            {% with comments.count as total_comments %}
+                <h2 class="text-xl font-semibold">Comentarios ({{ total_comments }})</h2>
+            {% endwith %}
+
+            <div class="flex flex-col gap-4 mt-4">
+                {% for comment in comments %}
+                    <div class="bg-white shadow-md rounded-xl p-4 border border-gray-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-semibold text-gray-800">{{ comment.name }}</h3>
+                            <p class="text-sm text-gray-500">{{ comment.created }}</p>
+                        </div>
+                        <p class="text-gray-700">{{ comment.body }}</p>
+                    </div>
+                {% empty %}
+                    <p class="text-gray-500 text-sm">No hay comentarios. ¡Sé el primero en comentar!</p>
+                {% endfor %}
+            </div>
+
+
+            <hr class="mt-4 mb-4"> 
+
+            <div class="flex flex-col gap-4">
+                <h2>Añadir un comentario</h2>
+
+                <form method="post" class="flex flex-col gap-4">
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                        <div class="flex gap-6 items-center">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+
+                    <div class="flex justify-start">
+                        <button type="submit" class="btn-secondary ">Agregar comentario</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    {% block js_files %}
+        <script src="{% static "js/utilities/textarea.js" %}"></script>
+    {% endblock js_files %}
+{% endblock content %}

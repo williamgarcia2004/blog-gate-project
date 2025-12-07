@@ -1,0 +1,79 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block pag_descrip %} Create post {% endblock pag_descrip %}
+{% block title_pag %} Create Post 🖋️ | Blog Gate 💻 {% endblock title_pag %}
+{% block favicon %} 
+    https://th.bing.com/th/id/R.364af3c5c0ded42bd3a26d460b30b7f9?rik=zAx7zasTQyLRRw&pid=ImgRaw&r=0
+{% endblock favicon %}
+{% block css_styles %}
+    <style>
+        select, ::picker(select) { 
+            appearance: base-select;
+        }
+
+        option{ 
+            padding: 6px 10px;
+
+            &:checked {
+                background-color: #09f;
+            }
+        }
+
+        textarea {
+            resize: none;
+            overflow: hidden;
+            width: 450px;
+        }
+
+        input[type="text"], textarea, select, input[type="file"] { 
+            background-color: #e5e7eb;
+            padding: 6px 10px;
+            border: 0;
+            outline: 0;
+        }
+    </style>
+{% endblock css_styles %}
+
+{% block content %}
+    <header class="bg-black text-white px-4 py-6 flex justify-center items-center container-sticky ">
+        <h2 class="tracking-widest font-bold font-ubuntu text-xl text-center">Crear post</h2>
+    </header>
+
+    <form method="POST" class="py-6" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <ul class="text-red-600 text-sm">
+                {% for error in form.non_field_errors %}
+                    <li class="text-center">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="flexbox1 gap-4">
+            {% for field in form %}
+                <div class="flex items-center gap-4">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {% if field.errors %}
+                        <ul class="text-red-600 text-sm">
+                            {% for error in field.errors %}
+                                <li class="text-center">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    
+                    {{ field }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="flex justify-center mt-4">
+            <button type="submit" class="btn-primary">Crear</button>
+        </div>
+    </form>
+    
+    {% block js_files %}
+        <script src="{% static "js/utilities/textarea.js" %}"></script>
+    {% endblock js_files %}
+{% endblock content %}

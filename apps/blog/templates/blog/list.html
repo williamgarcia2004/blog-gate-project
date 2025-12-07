@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+{% load blog_tags %}
+
+{% block pag_descrip %} Lista de blogs {% endblock pag_descrip %}
+{% block title_pag %} Lista de blogs | BlogGate 💻 {% endblock title_pag %}
+{% block favicon %}
+    https://static.vecteezy.com/system/resources/previews/022/791/223/original/blog-site-blogger-png.png
+{% endblock favicon %}
+
+{% block content %}
+    <body>
+        <header class="bg-black text-white px-4 py-6 flex justify-between items-center container-sticky">
+            <h2 class="text-xl text-center font-semibold tracking-widest font-playpen-sans">Lista de publicaciones</h2>
+            <form action="{% url 'custom_auth:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="cursor-pointer font-semibold tracking-widest transition hover:text-red-500">Cerrar sesión</button>
+            </form>
+        </header>
+
+        <main class="py-6 px-5">
+            <section class="px-5 py-7 flex flex-col gap-5">
+                <h2 class="font-ubuntu text-2xl text-center">Total de posts: {% total_posts %}</h2>
+
+                <a class="btn-primary mx-auto my-0" href="{% url "blog:create_post" %}">Crear post</a>
+                
+                {% if tag %}
+                    <h2 class="text-2xl">Post con la etiqueta <span class="font-semibold font-raleway">"{{ tag.name }}"</span></h2>
+                {% endif %}
+                
+                {% for post in posts %}
+                    <div class="flex flex-col gap-5">
+                        <div>
+                            <h3>Título del post: <span class="font-semibold"><a href="{{ post.get_absolute_url }}" class="transition hover:text-blue-700">{{ post.title_post }}</a></span></h3>
+                            <p>Nombre del autor: <span class="font-semibold">{{ post.author.first_name }} {{ post.author.last_name }}</span></p>
+                            <p>Etiquetas: 
+                                
+                                {% for tag in post.tags.all %}
+                                    <a href="{% url "blog:post_list_by_tag" tag.slug %}" class="font-semibold text-blue-600 transition hover:text-blue-800">
+                                    {{ tag.name }}
+                                    </a>{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                            <p>Fecha de publicación: <span class="font-semibold">{{ post.publish }}</span></p>
+                            <p>Fecha de modificación: <span class="font-semibold">{{ post.edited }}</span></p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <a href="{% url "blog:update_post" post.slug_title  %}" class="btn-secondary">Editar</a>
+                            <a href="{% url "blog:delete_post" post.slug_title %}" class="btn-danger">Eliminar</a>
+                        </div>
+
+                        <hr>
+                    </div>
+                {% endfor %}
+            </section>
+
+            <section>
+                {% include "fragments/pagination.html" with page=posts %}
+            </section>
+        </main>
+    </body>
+{% endblock content %}

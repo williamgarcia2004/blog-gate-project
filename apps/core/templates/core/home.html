@@ -1,0 +1,307 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block pag_descrip %} Página principal  {% endblock pag_descrip %}
+{% block title_pag %}  Página principal | Blog Gate 💻 {% endblock title_pag %}
+{% block favicon %}
+    https://th.bing.com/th/id/R.685500eb6197cd2542be81d9a7cfb0c7?rik=lcrGCnkXlvUoZg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fxTg%2fLbz%2fxTgLbzAXc.png&ehk=jDZ4porYNutAGkACzakuHgWkrv2Leq0aLMH7PXLoYJs%3d&risl=&pid=ImgRaw&r=0
+{% endblock favicon %}
+
+{% block css_styles %}
+    <link rel="stylesheet" href="{% static "css/home.css" %}">
+{% endblock css_styles %}
+
+{% block content %}
+    <body>
+        <header class="scroll-smooth bg-black/95 h-20 px-4 py-5 flex justify-between items-center group container-sticky" id="header">
+            <h1 class="font-ubuntu font-bold text-3xl tracking-wider">
+                <span class="bg-gr from-orange-500 to-orange-600">Blog</span><span class="bg-gr from-sky-600 to-sky-700">Gate</span>
+            </h1>
+
+            <nav class="flex gap-4 max-lg:hidden" id="navbar">
+                <a href="#inicio" class="font-semibold text-lg text-white tracking-wide">Inicio</a>
+                <a href="#sobre" class="font-semibold text-lg text-white tracking-wide">Sobre</a>
+                <a href="#colaboradores" class="font-semibold text-lg text-white tracking-wide">Colaboradores</a>
+                <a href="#preguntas" class="font-semibold text-lg text-white tracking-wide">Más info</a>
+            </nav>
+
+            <div class="hidden max-lg:block max-lg:relative">
+                <input type="checkbox" class="cursor-pointer scale-custom-checkbox absolute -top-1.5 -left-6.5 z-20 opacity-0 peer">
+                <i class="fa-solid fa-bars block scale-custom-icons text-white absolute -top-1.5 right-3 z-10 peer-checked:opacity-0"></i>
+                <i class="fa-solid fa-x block scale-custom-icons text-white absolute -top-1.5 right-3 z-10 opacity-0 peer-checked:opacity-100"></i>
+            </div>
+        </header>
+
+        <main>
+            <section class="h-main px-4 py-4 relative" id="inicio">
+                <div class="absolute inset-0">
+                    <img src="https://nkgr.co.jp/wp-content/uploads/2021/08/AdobeStock_250265054.jpg" class="img-cover object-right">
+
+                    <div class="absolute inset-0 bg-black opacity-50"></div>
+                </div>
+
+                <div class="text-white text-center relative h-full flexbox1 gap-2">
+                    <h2 class="font-bold font-ubuntu text-3xl">Bienvenido a nuestra página web!</h2>
+                    <p class="font-ubuntu text-lg">Una puerta a experiencias más allá de lo tradicional</p>
+                    <a class="bg-yellow-400 text-gray-900 py-2 px-6 rounded-full text-lg font-semibold transition duration-300 ease-in-out" href="{% url "custom_auth:login" %}">Iniciar Sesión</a>
+                </div>
+            </section>
+
+            <section class="py-28 px-10 flex flex-col justify-between items-center  gap-20" id="sobre">
+                <div class="text-center flex flex-col items-center gap-5">
+                    <h2 class="font-ubuntu font-bold text-3xl tracking-widest bg-gr from-blue-800 to-blue-900">¿Qué ofrecemos?</h2>
+                    <p class="text-lg">Todo lo necesario para publicar, gestionar y descubrir contenido en una plataforma hecha para creadores y lectores de blog</p>
+                </div>
+
+                <div class="w-full flex justify-evenly items-center flex-wrap gap-6">
+                    <div class="text-center flexbox1 gap-2">
+                        <i class="fa-solid fa-pencil text-2xl text-blue-700"></i>
+                        <h3 class="font-roboto-mono font-bold text-xl tracking-wider">Editor de Blogs</h3>
+                        <p class="w-72">Crea entradas atractivas con nuestro editor visual fácil de usar. Dale vida a tus ideas con texto, imágenes, y mucho más.</p>
+                    </div>
+
+                    <div class="text-center flexbox1 gap-2">
+                        <i class="fa-solid fa-palette text-2xl bg-gr from-red-500 via-blue-700 to-yellow-500"></i>
+                        <h3 class="font-roboto-mono font-bold text-xl tracking-wider">Personalización</h3>
+                        <p class="w-72">Elige el diseño de tu blog, colores, tipografía y estructura. Haz que tu espacio sea único y refleje tu estilo.</p>
+                    </div>
+
+                    <div class="text-center flexbox1 gap-2">
+                        <i class="fa-solid fa-chart-simple text-2xl bg-gr from-blue-800 to-green-700"></i>
+                        <h3 class="font-roboto-mono font-bold text-xl tracking-wider">Estadísticas</h3>
+                        <p class="w-72">Descubre cuántas personas leen tus publicaciones. Mide el impacto de tu contenido en tiempo real.</p>
+                    </div>
+                </div>  
+            </section>
+
+            <section class="bg-linear-to-br from-gray-800 via-gray-700 to-gray-900 py-28 px-10 flexbox1 gap-12">
+                <h2 class="font-bold font-roboto-mono text-center text-3xl text-white tracking-widest">Características del aplicativo</h2>
+
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="group relative cursor-pointer overflow-hidden bg-gray-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:rounded-lg sm:px-10">
+                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-purple-400 transition-all duration-300 group-hover:scale-[20]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-20 w-20 place-items-center rounded-full bg-purple-500 transition-all duration-300 group-hover:bg-purple-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </span>
+
+                            <div class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                <span class="font-semibold tracking-wider text-xl">Seguridad</span>
+                                <p>Protege tu contenido y datos personales con autenticación robusta y permisos de acceso configurables.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group relative cursor-pointer overflow-hidden bg-gray-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:rounded-lg sm:px-10">
+                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-400 transition-all duration-300 group-hover:scale-[20]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-600">
+                                <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M17.5291 7.77C17.4591 7.76 17.3891 7.76 17.3191 7.77C15.7691 7.72 14.5391 6.45 14.5391 4.89C14.5391 3.3 15.8291 2 17.4291 2C19.0191 2 20.3191 3.29 20.3191 4.89C20.3091 6.45 19.0791 7.72 17.5291 7.77Z" fill="#ffffff"></path>
+                                        <path d="M20.7916 14.7004C19.6716 15.4504 18.1016 15.7304 16.6516 15.5404C17.0316 14.7204 17.2316 13.8104 17.2416 12.8504C17.2416 11.8504 17.0216 10.9004 16.6016 10.0704C18.0816 9.8704 19.6516 10.1504 20.7816 10.9004C22.3616 11.9404 22.3616 13.6504 20.7916 14.7004Z" fill="#ffffff"></path>
+                                        <path d="M6.44016 7.77C6.51016 7.76 6.58016 7.76 6.65016 7.77C8.20016 7.72 9.43016 6.45 9.43016 4.89C9.43016 3.29 8.14016 2 6.54016 2C4.95016 2 3.66016 3.29 3.66016 4.89C3.66016 6.45 4.89016 7.72 6.44016 7.77Z" fill="#ffffff"></path>
+                                        <path d="M6.55109 12.8506C6.55109 13.8206 6.76109 14.7406 7.14109 15.5706C5.73109 15.7206 4.26109 15.4206 3.18109 14.7106C1.60109 13.6606 1.60109 11.9506 3.18109 10.9006C4.25109 10.1806 5.76109 9.89059 7.18109 10.0506C6.77109 10.8906 6.55109 11.8406 6.55109 12.8506Z" fill="#ffffff"></path>
+                                        <path d="M12.1208 15.87C12.0408 15.86 11.9508 15.86 11.8608 15.87C10.0208 15.81 8.55078 14.3 8.55078 12.44C8.56078 10.54 10.0908 9 12.0008 9C13.9008 9 15.4408 10.54 15.4408 12.44C15.4308 14.3 13.9708 15.81 12.1208 15.87Z" fill="#ffffff"></path>
+                                        <path d="M8.87078 17.9406C7.36078 18.9506 7.36078 20.6106 8.87078 21.6106C10.5908 22.7606 13.4108 22.7606 15.1308 21.6106C16.6408 20.6006 16.6408 18.9406 15.1308 17.9406C13.4208 16.7906 10.6008 16.7906 8.87078 17.9406Z" fill="#ffffff"></path>
+                                    </g>
+                                </svg>
+                            </span>
+
+                            <div class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                    <span class="font-semibold tracking-wider text-xl">Comunidad</span>
+                                    <p>Diversas comunidades para compartir conocimientos, leer experiencias, intercambiar costumbre, ...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group relative cursor-pointer overflow-hidden bg-gray-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:rounded-lg sm:px-10">
+                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-green-400 transition-all duration-300 group-hover:scale-[20]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-20 w-20 place-items-center rounded-full bg-green-500 transition-all duration-300 group-hover:bg-green-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </span>
+                            <div class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                <span class="font-semibold tracking-wider text-xl">Analytics</span>
+                                <p>Obtén información detallada sobre el rendimiento de tus publicaciones con análisis y reportes en tiempo real.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group relative cursor-pointer overflow-hidden bg-gray-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:rounded-lg sm:px-10">
+                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-red-400 transition-all duration-300 group-hover:scale-[20]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-20 w-20 place-items-center rounded-full bg-red-500 transition-all duration-300 group-hover:bg-red-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                </svg>
+                            </span>
+
+                            <div class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                <span class="font-semibold tracking-wider text-xl">Notificaciones</span>
+                                <p>Mantente actualizado con notificaciones instantáneas sobre comentarios, likes y nuevas interacciones en tus posts.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group relative cursor-pointer overflow-hidden bg-gray-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:rounded-lg sm:px-10">
+                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-yellow-400 transition-all duration-300 group-hover:scale-[20]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-20 w-20 place-items-center rounded-full bg-yellow-500 transition-all duration-300 group-hover:bg-yellow-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </span>
+
+                            <div class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                <span class="font-semibold tracking-wider text-xl">Configuración</span>
+                                <p>Personaliza tu experiencia de blogging y configura las preferencias del sistema de manera sencilla e intuitiva.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group relative cursor-pointer overflow-hidden bg-gray-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:rounded-lg sm:px-10">
+                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-pink-400 transition-all duration-300 group-hover:scale-[20]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-20 w-20 place-items-center rounded-full bg-pink-500 transition-all duration-300 group-hover:bg-pink-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </span>
+
+                            <div class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                <span class="font-semibold tracking-wider text-xl">Usuario</span>
+                                <p>Gestiona perfiles de autores, roles de colaboradores y permisos de acceso de manera segura y eficiente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-gray-50 py-16">
+                <h2 class="mb-6 text-center text-3xl font-semibold font-playpen-sans">Colaboradores</h2>
+                <div class="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6">
+                    <div class="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full">
+                        <img class="w-full h-48 object-cover object-top" src="https://tse2.mm.bing.net/th/id/OIP.kFzT2dQrsnrrecSDs6IIfwHaJd?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Foto de perfil">
+
+                        <div class="p-6 flex flex-col grow">
+                            <h2 class="text-2xl font-bold text-gray-800">Alexandro Varell</h2>
+                            <p class="text-gray-600 mt-2">Ingeniero de Sistemas</p>
+                            <p class="text-gray-500 text-sm mt-4 grow">Apasionado por crear plataformas rápidas, seguras y escalables.</p>
+
+                            <div class="mt-4 flex space-x-3">
+                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Contacto</a>
+                                <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">Portafolio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full">
+                        <img class="w-full h-48 object-cover" src="https://th.bing.com/th/id/R.0105fad192199ff845f689ce7e73ab36?rik=Q5Mv3ttsXcfL8Q&pid=ImgRaw&r=0" alt="Foto de perfil">
+
+                        <div class="p-6 flex flex-col grow">
+                            <h2 class="text-2xl font-bold text-gray-800">Liana Corvin</h2>
+                            <p class="text-gray-600 mt-2">Diseñadora UX/UI</p>
+                            <p class="text-gray-500 text-sm mt-4 grow">Enfocada en mejorar la experiencia del usuario combinando estética con usabilidad.</p>
+
+                            <div class="mt-4 flex space-x-3">
+                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Contacto</a>
+                                <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">Portafolio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full">
+                        <img class="w-full h-48 object-cover object-center" src="https://media.istockphoto.com/photos/handsome-man-in-the-mountains-picture-id1208575707?k=20&m=1208575707&s=612x612&w=0&h=Z5roNgFWfCchu1DyUYONOIBUPkO-9hc_VxjLcnvLXic=" alt="Foto de perfil">
+
+                        <div class="p-6 flex flex-col grow">
+                            <h2 class="text-2xl font-bold text-gray-800">Mateo Dravick</h2>
+                            <p class="text-gray-600 mt-2">Desarrollador de apps móviles</p>
+                            <p class="text-gray-500 text-sm mt-4 grow">Destacado por su eficiencia en rendimiento y su enfoque en accesibilidad móvil.</p>
+
+                            <div class="mt-4 flex space-x-3">
+                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Contacto</a>
+                                <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">Portafolio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 4 -->
+                    <div class="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full">
+                        <img class="w-full h-48 object-cover" src="https://tse4.mm.bing.net/th/id/OIP.2Ghc4yE8YqBdyb9FKf6InAHaD_?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Foto de perfil">
+
+                        <div class="p-6 flex flex-col grow">
+                            <h2 class="text-2xl font-bold text-gray-800">Serena Halden</h2>
+                            <p class="text-gray-600 mt-2">Analista de Datos</p>
+                            <p class="text-gray-500 text-sm mt-4 grow">Experta en interpretar volúmenes de datos para impulsar decisiones empresariales.</p>
+
+                            <div class="mt-4 flex space-x-3">
+                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Contacto</a>
+                                <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">Portafolio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="bg-gray-400">
+                <div class="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
+                    <h2 class="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">Preguntas más frecuentes</h2>
+                    <div class="divide-y dark:divide-gray-300">
+                        <div class="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+                            <h3 class="font-semibold md:col-span-5">¿Con qué tecnologías fue construido el aplicativo</h3>
+                            <p class="md:pl-0 md:col-span-7">Fue construido con las tecnologías más robustas. Para el frontend usamos el clásico JavaScript, para el backend usamos el robusto framework Django</p>
+                        </div>
+                        <div class="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+                            <h3 class="font-semibold md:col-span-5">¿Cuáles serán las próximas funcionalidades que tendrá la aplicación?</h3>
+                            <p class="md:pl-0 md:col-span-7">Nuestro equipo ya está trabajando en funcionalidades que se agregarán en un futuro, como: autenticación 2FA; autenticación con facebook, google y x; filtros de búsqueda; cambio de cuenta; migración a otra base de datos; migración de JavaScript a la eficiente y conocida biblioteca react; entre otros</p>
+                        </div>
+                        <div class="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+                            <h3 class="font-semibold md:col-span-5">¿Cuál fue el motivo por el cual, decidieron construir esta aplicación?</h3>
+                            <p class="md:pl-0 md:col-span-7">Debido a la caída de 4chan y a la desaparición de tusecreto.io, nos vino la idea de mezclar un poco de cada uno</p>
+                        </div>
+                        <div class="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+                            <h3 class="font-semibold md:col-span-5">¿Qué fue lo más difícil que enfrentaron al construir la aplicación?</h3>
+                            <p class="md:pl-0 md:col-span-7">Lo más difícil fue construir el frontend, eso fue lo que nos tomó más tiempo, la creatividad del diseñador de UI fue clave para llevar adelante el frontend</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="flex flex-col justify-center gap-6 bg-black/80 py-10">
+            <div class="flex justify-center space-x-5">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" />
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
+                </a>
+                <a href="https://messenger.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluent/30/000000/facebook-messenger--v2.png" />
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluent/30/000000/twitter.png" />
+                </a>
+            </div>
+            <p class="text-center text-white text-2xl font-medium font-ubuntu">&copy; William Garcia. All rights reservered.</p>
+        </footer>
+    </body>
+
+    {% block js_files %}
+        <script src="{% static "js/home.js" %}"></script>
+    {% endblock js_files %}
+    
+{% endblock content %} 

@@ -1,0 +1,15 @@
+<div class="flex justify-center">
+    <span class="step-links">
+        {% if page.has_previous %}
+            <a href="?page={{ page.previous_page_number }}" class="btn-primary">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page <span class="font-semibold">{{ page.number }}</span> of <span class="font-semibold">{{ page.paginator.num_pages }}</span> 
+        </span>
+        
+        {% if page.has_next %}
+            <a href="?page={{ page.next_page_number }}" class="btn-primary">Next</a>
+        {% endif %}
+    </span>
+</div>

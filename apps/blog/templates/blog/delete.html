@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block pag_descrip %} Borrar post {% endblock pag_descrip %}
+{% block title_pag %} Borrar post #{{ post.id }} | BlogGate 💻 {% endblock title_pag %}
+{% block favicon %}
+    https://cdn-icons-png.flaticon.com/512/200/200389.png
+{% endblock favicon %}
+
+{% block content %}
+    <header class="bg-black text-white px-4 py-6 flex justify-center items-center container-sticky">
+        <h2 class="tracking-widest font-bold font-ubuntu text-xl text-center">Eliminar post #{{ post.id }}</h2>
+    </header>
+
+    <form method="POST" id="deleteForm" class="flex justify-center mt-6">
+        {% csrf_token %}
+
+        <button class="btn-danger">Eliminar post</button>
+    </form>
+
+    <script>
+        document.addEventListener("submit", (e) => {
+            if (e.target.matches("#deleteForm")) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "¡No podrás deshacer esta acción!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById("deleteForm").submit();
+                    }
+                });                
+            }
+        })
+    </script>
+{% endblock content %}

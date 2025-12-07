@@ -1,0 +1,16 @@
+:root {
+    --color-skyblue-v1: #4a9cff;
+    --color-blue-v1: rgba(30, 41, 59, 0.7);
+}
+
+html { 
+    interpolate-size: allow-keywords;
+}
+
+.scale-custom-icons { 
+    transform: scale(2.4, 2.10);
+}
+
+.scale-custom-checkbox {
+    transform: scale(2.75, 2.5);
+}

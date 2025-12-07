@@ -1,0 +1,88 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block pag_descrip %} Update post {% endblock pag_descrip %}
+{% block title_pag %} Update post #{{ post.id }} | BlogGate 💻 {% endblock title_pag %}
+{% block favicon %}
+    https://cdn-icons-png.flaticon.com/512/200/200389.png
+{% endblock favicon %}
+{% block css_styles %}
+    <style>
+        select, ::picker(select) { 
+            appearance: base-select;
+        }
+
+        option{ 
+            padding: 6px 10px;
+
+            &:checked {
+                background-color: #09f;
+            }
+        }
+
+        textarea {
+            resize: none;
+            overflow: hidden;
+            width: 450px;
+        }
+
+        input[type="text"], textarea, select, input[type="file"] { 
+            background-color: #e5e7eb;
+            padding: 6px 10px;
+            border: 0;
+            outline: 0;
+        }
+        
+        div br {
+            display: none;
+        }
+    </style>
+{% endblock css_styles %}
+
+{% block content %}
+    <header class="bg-black text-white px-4 py-6 flex justify-center items-center container-sticky">
+        <h2 class="tracking-widest font-bold font-ubuntu text-xl text-center">Actualizar Post</h2>
+    </header>
+
+    <section class="px-4 py-6 flexbox1 gap-3">
+        <h2 class="text-xl font-ubuntu font-semibold tracking-widest">Post # {{ post.id }}: {{ post.title_post }}</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <ul class="text-red-600 text-sm">
+                    {% for error in form.non_field_errors %}
+                        <li class="text-center">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div class="flexbox1 gap-4">
+                {% for field in form %}
+                    <div class="flex items-center justify-center gap-4">
+                        {% if field.errors %}
+                            <ul class="text-red-600 text-sm">
+                                {% for error in field.errors %}
+                                    <li class="text-center">{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="flex gap-4 justify-center items-center">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="flex justify-center mt-4">
+                <button type="submit" class="btn-primary">Actualizar</button>
+            </div>
+        </form>
+    </section>
+
+    {% block js_files %}
+        <script src="{% static "js/utilities/textarea.js" %}"></script>
+    {% endblock js_files %}
+{% endblock content %}
