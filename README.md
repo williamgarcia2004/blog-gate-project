@@ -1,10 +1,10 @@
 # Blog gate
 
-Les presentamos un aplicativo que se trata de un blog, inspirado en reddit, en 4chan y en el desaparecido *tusecreto.io*.
+We present an application that works as a blog, inspired by Reddit, 4chan, and the now-defunct *tusecreto.io*.
 
-# Funcionalidades
-- Autenticación segura, evitando: contraseñas muy similares al correo, correos no válidos o temporales
-- Encriptación de contraseñas en la base de datos
-- Crear, editar y eliminar post (propios)
-- Comentar post de otros usuarios
-- Filtrar posts por categoría
+# Features
+- Secure authentication, preventing: passwords too similar to the email, invalid or temporary emails
+- Password encryption in the database
+- Create, edit, and delete (your own) posts
+- Comment on other users’ posts
+- Filter posts by category
